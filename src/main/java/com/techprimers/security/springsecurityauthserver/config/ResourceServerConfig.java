@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @EnableResourceServer
 @Configuration
@@ -20,6 +21,9 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService customUserDetailsService;
 
+  /*  @Autowired
+    private AccessDeniedHandler accessDeniedHandler;*/
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -30,8 +34,26 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin()
+                .formLogin().loginPage("/login")
                 .permitAll();
+
+       http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/home", "/about","/oauth/authorize").permitAll()
+                .antMatchers("/admin*//**").hasAnyRole("ADMIN")
+                .antMatchers("/user*//**").hasAnyRole("USER")
+                .anyRequest().authenticated();
+        /*         .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll()
+                .and()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);*/
+        /*http.requestMatchers()
+                .antMatchers("/oauth/authorize");*/
     }
 
 
