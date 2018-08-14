@@ -21,12 +21,21 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService customUserDetailsService;
 
-  /*  @Autowired
-    private AccessDeniedHandler accessDeniedHandler;*/
+    @Autowired
+    private AccessDeniedHandler accessDeniedHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        /*http.requestMatchers()
+                .antMatchers("/login", "/oauth/authorize")
+                .and()
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin().loginPage("/login")
+                .permitAll();*/
         http.requestMatchers()
                 .antMatchers("/login", "/oauth/authorize")
                 .and()
@@ -35,15 +44,24 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin().loginPage("/login")
-                .permitAll();
-
-       http.csrf().disable()
+                .permitAll()
+                .and()
+                .httpBasic()
+                .and()
                 .authorizeRequests()
                 .antMatchers("/home", "/about","/oauth/authorize").permitAll()
-                .antMatchers("/admin*//**").hasAnyRole("ADMIN")
-                .antMatchers("/user*//**").hasAnyRole("USER")
-                .anyRequest().authenticated();
-        /*         .and()
+                .antMatchers("/admin*//**//**").hasAnyRole("ADMIN")
+                .antMatchers("/user*//**//**").hasAnyRole("USER")
+                .anyRequest().authenticated()
+        ;
+
+       /*http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/home", "/about","/oauth/authorize").permitAll()
+                .antMatchers("/admin*//**//**").hasAnyRole("ADMIN")
+                .antMatchers("/user*//**//**").hasAnyRole("USER")
+                .anyRequest().authenticated()
+                .and()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
@@ -52,8 +70,18 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler);*/
-        /*http.requestMatchers()
-                .antMatchers("/oauth/authorize");*/
+       /* http
+                .formLogin().loginPage("/login").permitAll()
+                .and().httpBasic().and()
+                .requestMatchers()
+                //specify urls handled
+                .antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access")
+                .antMatchers("/fonts*//**", "/js*//**", "/css*//**")
+                .and()
+                .authorizeRequests()
+                .antMatchers("/fonts*//**", "/js*//**", "/css*//**").permitAll()
+                .antMatchers("/home", "/about").permitAll()
+                .anyRequest().authenticated();*/
     }
 
 
