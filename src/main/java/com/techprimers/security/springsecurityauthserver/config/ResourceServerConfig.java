@@ -27,33 +27,22 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        /*http.requestMatchers()
-                .antMatchers("/login", "/oauth/authorize")
-                .and()
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin().loginPage("/login")
-                .permitAll();*/
         http.requestMatchers()
                 .antMatchers("/login", "/oauth/authorize")
+                .antMatchers("/admin","/user").mvcMatchers("/admin","/user")
                 .and()
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
+                .and().formLogin().loginPage("/login").permitAll()
+                /*
+                -------- can't control role so you must to check at each controller
                 .and()
-                .formLogin().loginPage("/login")
-                .permitAll()
-                .and()
-                .httpBasic()
-                .and()
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/home", "/about","/oauth/authorize").permitAll()
-                .antMatchers("/admin*//**//**").hasAnyRole("ADMIN")
-                .antMatchers("/user*//**//**").hasAnyRole("USER")
-                .anyRequest().authenticated()
-        ;
+                .antMatchers("/admin").hasAnyRole("ADMIN")
+                .antMatchers("/user").hasAnyRole("USER")*/
+               ;
 
        /*http.csrf().disable()
                 .authorizeRequests()
@@ -97,6 +86,6 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
         web
                 .ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**",
-                        "/js/**", "/images/**","/loginhome");
+                        "/js/**", "/images/**","/loginhome","/home");
     }
 }
