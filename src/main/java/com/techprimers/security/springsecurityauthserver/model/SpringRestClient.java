@@ -13,11 +13,11 @@ import java.util.List;
 
 public class SpringRestClient {
  
-    public static final String REST_SERVICE_URI = "http://localhost:8080";
+    public static final String REST_SERVICE_URI = "http://localhost:8081/auth";
     
-    public static final String AUTH_SERVER_URI = "http://localhost:8080/oauth/token";
+    public static final String AUTH_SERVER_URI = "http://localhost:8081/auth/oauth/token";
     
-    public static final String QPM_PASSWORD_GRANT = "?grant_type=password&username=bill&password=abc123";
+    public static final String QPM_PASSWORD_GRANT = "?grant_type=password&username=Sam&password=sam";
     
     public static final String QPM_ACCESS_TOKEN = "?access_token=";
 
@@ -27,7 +27,7 @@ public class SpringRestClient {
     private static HttpHeaders getHeaders(){
     	HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        headers.setAcceptCharset(Arrays.asList(Charset.forName("UTF-8")));
+        //headers.setAcceptCharset(Arrays.asList(Charset.forName("UTF-8")));
     	return headers;
     }
     
@@ -83,13 +83,13 @@ public class SpringRestClient {
         RestTemplate restTemplate = new RestTemplate();
         
         HttpEntity<String> request = new HttpEntity<String>(getHeaders());
-        ResponseEntity<List> response = restTemplate.exchange(REST_SERVICE_URI+"/user/"+QPM_ACCESS_TOKEN+tokenInfo.getAccess_token(),
+        ResponseEntity<List> response = restTemplate.exchange(REST_SERVICE_URI+"/users/"+QPM_ACCESS_TOKEN+tokenInfo.getAccess_token(),
         		HttpMethod.GET, request, List.class);
         List<LinkedHashMap<String, Object>> usersMap = (List<LinkedHashMap<String, Object>>)response.getBody();
         
         if(usersMap!=null){
             for(LinkedHashMap<String, Object> map : usersMap){
-                System.out.println("User : id="+map.get("id")+", Name="+map.get("name")+", Age="+map.get("age")+", Salary="+map.get("salary"));;
+                System.out.println("User : id="+map.get("id"));
             }
         }else{
             System.out.println("No user exist----------");
@@ -180,7 +180,7 @@ public class SpringRestClient {
     	AuthTokenInfo tokenInfo = sendTokenRequest();
     	listAllUsers(tokenInfo);
         
-    	getUser(tokenInfo);
+    	/*getUser(tokenInfo);
         
     	createUser(tokenInfo);
         listAllUsers(tokenInfo);
@@ -192,6 +192,6 @@ public class SpringRestClient {
         listAllUsers(tokenInfo);
         
         deleteAllUsers(tokenInfo);
-        listAllUsers(tokenInfo);
+        listAllUsers(tokenInfo);*/
     }
 }

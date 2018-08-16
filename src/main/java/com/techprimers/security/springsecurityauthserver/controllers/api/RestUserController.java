@@ -17,7 +17,7 @@ public class RestUserController {
     @Autowired
     public UserServiceAPI userServiceAPI;
 
-    @RequestMapping(value = "/users",method = RequestMethod.GET)
+    @RequestMapping(value = "/users",method = {RequestMethod.GET,RequestMethod.POST})
     public List<Users> getAllUsers(){
         return (List<Users>) userServiceAPI.list();
     }

@@ -1,1 +1,4 @@
 https://github.com/TechPrimers/spring-security-oauth-mysql-example
+
+POST: http://localhost:8080/oauth/token?grant_type=password&username=bill&password=abc123
+http://localhost:8080/user/
