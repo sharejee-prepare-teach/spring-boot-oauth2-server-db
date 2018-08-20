@@ -14,4 +14,6 @@ POST http://localhost:8081/auth/oauth/token?grant_type=password&username=Sam&pas
 GET http://localhost:8081/auth/users/?access_token=379f34c9-8f0d-487c-aad3-b35d3283599c
 
 POST http://localhost:8081/auth/oauth/token?grant_type=refresh_token&refresh_token=094b7d23-973f-4cc1-83ad-8ffd43de1845
+--
+https://stackoverflow.com/questions/42741220/spring-resttemplate-receives-401-unauthorized
 
