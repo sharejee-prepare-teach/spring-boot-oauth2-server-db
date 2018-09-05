@@ -35,7 +35,7 @@ public class SpringRestClient {
      * Add HTTP Authorization header, using Basic-Authentication to send client-credentials.
      */
     private static HttpHeaders getHeadersWithClientCredentials(){
-    	String plainClientCredentials="my-trusted-client:secret";
+    	String plainClientCredentials="ClientId:secret";
     	String base64ClientCredentials = new String(Base64.encodeBase64(plainClientCredentials.getBytes()));
     	
     	HttpHeaders headers = getHeaders();
