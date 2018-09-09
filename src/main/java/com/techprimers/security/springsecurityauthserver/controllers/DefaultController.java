@@ -33,6 +33,7 @@ public class DefaultController {
         Optional<Users> users = userServiceAPI.findByName(principal.getName());
         users.ifPresent(user -> {
             System.out.println("User's name = " + user.getName());
+            System.out.println("User's role = " + user.getRoles());
         });
         return "/admin";
     }
