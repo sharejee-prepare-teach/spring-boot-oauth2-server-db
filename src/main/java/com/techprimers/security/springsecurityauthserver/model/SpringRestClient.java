@@ -6,7 +6,6 @@ import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
-import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -25,10 +24,10 @@ public class SpringRestClient {
      * Prepare HTTP Headers.
      */
     private static HttpHeaders getHeaders(){
-    	HttpHeaders headers = new HttpHeaders();
+        HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         //headers.setAcceptCharset(Arrays.asList(Charset.forName("UTF-8")));
-    	return headers;
+        return headers;
     }
     
     /*

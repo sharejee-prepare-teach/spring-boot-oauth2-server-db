@@ -86,6 +86,6 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
         web
                 .ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**",
-                        "/js/**", "/images/**","/loginhome","/home");
+                        "/js/**", "/images/**","/loginhome","/home","/about");
     }
 }
