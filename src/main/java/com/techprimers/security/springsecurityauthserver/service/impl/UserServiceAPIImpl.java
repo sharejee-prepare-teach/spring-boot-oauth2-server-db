@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Rith on 8/15/2018.
@@ -20,5 +21,10 @@ public class UserServiceAPIImpl implements UserServiceAPI {
     @Override
     public List<Users> list() {
         return (List<Users>) usersRepository.findAll();
+    }
+
+    @Override
+    public Optional<Users> findByName(String username) {
+        return (Optional<Users>) usersRepository.findByName(username);
     }
 }

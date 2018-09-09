@@ -88,7 +88,13 @@ public class SpringRestClient {
         
         if(usersMap!=null){
             for(LinkedHashMap<String, Object> map : usersMap){
-                System.out.println("User : id="+map.get("id"));
+                if(!map.get("roles").toString().equalsIgnoreCase("[]")){
+                    System.out.println("User : id="+map.get("id"));
+                    System.out.println("User name: "+map.get("name"));
+                    System.out.println("User last name: "+map.get("lastName"));
+                    System.out.println("User active: "+map.get("active"));
+                    System.out.println("User roles: "+map.get("roles"));
+                }
             }
         }else{
             System.out.println("No user exist----------");
@@ -192,5 +198,33 @@ public class SpringRestClient {
         
         deleteAllUsers(tokenInfo);
         listAllUsers(tokenInfo);*/
+    }
+
+    private static List<Users> getAllUsers(AuthTokenInfo tokenInfo){
+        Assert.notNull(tokenInfo, "Authenticate first please......");
+        Users users = new Users();
+
+        System.out.println("\nTesting listAllUsers API-----------");
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpEntity<String> request = new HttpEntity<String>(getHeaders());
+        ResponseEntity<List> response = restTemplate.exchange(REST_SERVICE_URI+"/users/"+QPM_ACCESS_TOKEN+tokenInfo.getAccess_token(),
+                HttpMethod.GET, request, List.class);
+        List<LinkedHashMap<String, Object>> usersMap = (List<LinkedHashMap<String, Object>>)response.getBody();
+
+        if(usersMap!=null){
+            for(LinkedHashMap<String, Object> map : usersMap){
+                if(!map.get("roles").toString().equalsIgnoreCase("[]")){
+                    System.out.println("User : id="+map.get("id"));
+                    System.out.println("User name: "+map.get("name"));
+                    System.out.println("User last name: "+map.get("lastName"));
+                    System.out.println("User active: "+map.get("active"));
+                    System.out.println("User roles: "+map.get("roles"));
+                }
+            }
+        }else{
+            System.out.println("No user exist----------");
+        }
+        return null;
     }
 }
