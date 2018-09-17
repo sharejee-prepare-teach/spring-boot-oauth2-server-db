@@ -6,7 +6,6 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class Users {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")

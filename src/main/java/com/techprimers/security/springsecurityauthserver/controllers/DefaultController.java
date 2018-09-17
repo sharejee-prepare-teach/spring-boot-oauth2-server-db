@@ -1,7 +1,6 @@
 package com.techprimers.security.springsecurityauthserver.controllers;
 
 import com.techprimers.security.springsecurityauthserver.model.Users;
-import com.techprimers.security.springsecurityauthserver.service.UserServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +17,8 @@ import java.util.stream.Collectors;
  */
 @Controller
 public class DefaultController {
-    @Autowired
-    private UserServiceAPI userServiceAPI;
+    /*@Autowired
+    private UserServiceAPI userServiceAPI;*/
 
     @GetMapping("/home")
     public String home() {
@@ -29,12 +28,12 @@ public class DefaultController {
     @GetMapping("/admin")
     public String admin(Principal principal) {
         System.out.println("Hello admin");
-        System.out.println(principal.getName());
+        /*System.out.println(principal.getName());
         Optional<Users> users = userServiceAPI.findByName(principal.getName());
         users.ifPresent(user -> {
             System.out.println("User's name = " + user.getName());
             System.out.println("User's role = " + user.getRoles());
-        });
+        });*/
         return "/admin";
     }
 

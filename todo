@@ -18,4 +18,5 @@ POST http://localhost:8081/auth/oauth/token?grant_type=refresh_token&refresh_tok
 https://stackoverflow.com/questions/42741220/spring-resttemplate-receives-401-unauthorized
 --
 https://www.baeldung.com/rest-api-spring-oauth2-angularjs
-=============================================================== please change method Optional of findByUsername to loadUserByUsername
+===============================================================
+please change method Optional of findByUsername to loadUserByUsername
