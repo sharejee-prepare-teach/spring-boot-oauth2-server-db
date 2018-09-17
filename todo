@@ -20,3 +20,5 @@ https://stackoverflow.com/questions/42741220/spring-resttemplate-receives-401-un
 https://www.baeldung.com/rest-api-spring-oauth2-angularjs
 ===============================================================
 please change method Optional of findByUsername to loadUserByUsername
+===> Change done
+https://www.baeldung.com/spring-security-authentication-with-a-database
