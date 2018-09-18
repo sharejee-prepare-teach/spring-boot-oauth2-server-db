@@ -1,4 +1,4 @@
-/*
+
 package com.techprimers.security.springsecurityauthserver.controllers.api;
 
 import com.techprimers.security.springsecurityauthserver.model.Users;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-*/
+
 /**
  * Created by Rith on 8/15/2018.
- *//*
+ */
 
 @RestController
 public class RestUserController {
@@ -25,4 +25,4 @@ public class RestUserController {
         return (List<Users>) userServiceAPI.list();
     }
 }
-*/
+

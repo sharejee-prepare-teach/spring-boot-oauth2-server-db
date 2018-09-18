@@ -1,4 +1,4 @@
-/*
+
 package com.techprimers.security.springsecurityauthserver.service.impl;
 
 import com.techprimers.security.springsecurityauthserver.model.Users;
@@ -8,12 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
-*/
+
 /**
  * Created by Rith on 8/15/2018.
- *//*
+ */
 
 @Service
 public class UserServiceAPIImpl implements UserServiceAPI {
@@ -27,8 +26,8 @@ public class UserServiceAPIImpl implements UserServiceAPI {
     }
 
     @Override
-    public Optional<Users> findByName(String username) {
-        return (Optional<Users>) usersRepository.findByName(username);
+    public Users findByName(String username) {
+        return  usersRepository.findByName(username);
     }
 }
-*/
+
