@@ -31,13 +31,16 @@ public class DefaultController {
         System.out.println("Hello admin");
         System.out.println(principal.getName());
         Users users = userServiceAPI.findByName(principal.getName());
-        Object ob = null;
+        String role = "";
         if (users.getRoles() != null) {
-            ob = users.getRoles();
-            System.out.println(users.getRoles());
-            System.out.println(ob);
+            role = users.getRoles().iterator().next().getRole();
+            if(role.equalsIgnoreCase("ADMIN")){
+                return "/admin";
+            }else {
+                return "/error/403";
+            }
         }
-        return "/admin";
+        return null;
     }
 
     @GetMapping("/user")

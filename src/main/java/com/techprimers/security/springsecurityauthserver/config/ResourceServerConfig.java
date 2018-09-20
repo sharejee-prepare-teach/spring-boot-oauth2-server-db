@@ -29,7 +29,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 
         http.requestMatchers()
                 .antMatchers("/login", "/oauth/authorize")
-                .antMatchers("/admin","/user").mvcMatchers("/admin","/user")
+                .antMatchers("/admin","/user","/403").mvcMatchers("/admin","/user","/403")
                 .and()
                 .authorizeRequests()
                 .anyRequest()
@@ -86,6 +86,6 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
         web
                 .ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**",
-                        "/js/**", "/images/**","/loginhome","/home","/about");
+                        "/js/**", "/images/**","/loginhome","/home","/about","/error/**");
     }
 }
