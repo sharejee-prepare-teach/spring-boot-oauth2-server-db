@@ -1,5 +1,6 @@
 package com.techprimers.security.springsecurityauthserver.controllers;
 
+import com.techprimers.security.springsecurityauthserver.model.Role;
 import com.techprimers.security.springsecurityauthserver.model.Users;
 import com.techprimers.security.springsecurityauthserver.service.UserServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -32,11 +30,17 @@ public class DefaultController {
         System.out.println(principal.getName());
         Users users = userServiceAPI.findByName(principal.getName());
         String role = "";
+        Boolean b = false;
         if (users.getRoles() != null) {
-            role = users.getRoles().iterator().next().getRole();
-            if(role.equalsIgnoreCase("ADMIN")){
+            for (Iterator<Role> roleIterator = users.getRoles().iterator(); roleIterator.hasNext(); ) {
+                role = roleIterator.next().getRole();
+                if (role.equalsIgnoreCase("ADMIN")) {
+                    b = true;
+                }
+            }
+            if (b == true) {
                 return "/admin";
-            }else {
+            } else {
                 return "/error/403";
             }
         }
