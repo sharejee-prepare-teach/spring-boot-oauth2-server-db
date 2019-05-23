@@ -1,4 +1,4 @@
-package com.techprimers.security.springsecurityauthserver.controllers;
+package com.phsaneakcore.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

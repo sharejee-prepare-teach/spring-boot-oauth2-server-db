@@ -1,4 +1,4 @@
-package com.techprimers.security.springsecurityauthserver.error;
+package com.phsaneakcore.error;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

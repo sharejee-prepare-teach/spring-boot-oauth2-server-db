@@ -1,4 +1,4 @@
-package com.techprimers.security.springsecurityauthserver.model;
+package com.phsaneakcore.model;
 
 import javax.persistence.*;
 import java.util.Set;

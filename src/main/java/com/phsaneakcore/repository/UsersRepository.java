@@ -1,6 +1,6 @@
-package com.techprimers.security.springsecurityauthserver.repository;
+package com.phsaneakcore.repository;
 
-import com.techprimers.security.springsecurityauthserver.model.Users;
+import com.phsaneakcore.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

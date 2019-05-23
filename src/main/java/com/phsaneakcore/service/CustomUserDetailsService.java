@@ -1,8 +1,8 @@
-package com.techprimers.security.springsecurityauthserver.service;
+package com.phsaneakcore.service;
 
-import com.techprimers.security.springsecurityauthserver.model.CustomUserDetails;
-import com.techprimers.security.springsecurityauthserver.model.Users;
-import com.techprimers.security.springsecurityauthserver.repository.UsersRepository;
+import com.phsaneakcore.model.CustomUserDetails;
+import com.phsaneakcore.model.Users;
+import com.phsaneakcore.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
